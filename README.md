@@ -1,8 +1,8 @@
 # Dashboard charts
 
-Live Site link 👉 [Click Here](https://)
+Live Site link 👉 [Click Here](https://darling-frangipane-774ceb.netlify.app/)
 
-Server Github link 👉 [Click Here](https://)
+Server Github link 👉 [Click Here](https://github.com/faisalantu/chart-dashboard-server)
 
 #### About The site:
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../contexts/FilterContext";
 import BarChart from "./BarChart";
 import axios from "../axiosConfig";
@@ -14,9 +14,12 @@ import LineChartStartYear from "./LineChartStartYear";
 import Loading from "./Loading";
 
 const Index = () => {
+  const [dataLoading, setDataLoading] = useState(false)
   const { filterState } = useContext(FilterContext);
   const { isLoading, data, refetch } = useQuery("chartData", async () => {
+    setDataLoading(true)
     const res = await axios.post(`/data`,filterState);
+    setDataLoading(false)
     return res.data;
   });
   
@@ -25,9 +28,14 @@ const Index = () => {
     console.log(filterState);
     // eslint-disable-next-line
   }, [filterState])
+
+  useEffect(() => {
+    console.log(isLoading);
+    // eslint-disable-next-line
+  }, [isLoading])
   
 
-  if (isLoading) return <Loading/>
+  if (isLoading || dataLoading) return <Loading/>
   return (
     <div>
       <div className='md:w-10/12 mx-auto flex flex-col '>

@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { BiHomeSmile, BiArrowFromLeft, BiBrush,BiCalendarMinus,BiCloud,BiCompass,BiData,BiLayerMinus } from "react-icons/bi";
-
-const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const SidebarMobile = ({isSidebarOpen, setIsSidebarOpen}) => {
+  
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
@@ -24,13 +23,13 @@ const Sidebar = () => {
       onMouseLeave={() => {
         setIsSidebarOpen(false);
       }}
-      className='hidden md:block  whitespace-nowrap'
+      className="md:hidden"
     >
-      <div className={` w-16 border`}></div>
+      <div className={`bg-white w-0 border`}></div>
       <div
         ref={ref}
         className={`transition-all absolute ${
-          isSidebarOpen ? "w-64" : "w-16"
+          isSidebarOpen ? "w-64" : "w-0"
         } top-0 bottom-0 left-0 overflow-y-auto overflow-x-hidden  bg-gray-100 z-50`}
       >
         <div className='flex justify-end p-3'>
@@ -91,4 +90,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarMobile;
